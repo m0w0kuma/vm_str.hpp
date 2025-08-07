@@ -8,6 +8,9 @@ At compile time (constexpr), the library generates bytecode representing the obf
 
 The string is constructed on the stack at runtime and does not appear anywhere in the executable prior to execution. 
 # Use
+- `vm_cstr(...)` to get a pointer to a c-like string.
+- `vm_str(...)` to get a std c++ string.
+
 ```cpp
 #include "vm.hpp"
 
