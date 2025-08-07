@@ -7,6 +7,11 @@ vm_str.hpp is a header-only string obfuscation library, heavily inspired by xors
 At compile time (constexpr), the library generates bytecode representing the obfuscation schema. Then, at runtime, a stack-based VM interprets this bytecode to reconstruct the original string.
 
 The string is constructed on the stack at runtime and does not appear anywhere in the executable prior to execution. 
+
+<img width="1365" height="589" alt="Captura de tela 2025-08-06 190129" src="https://github.com/user-attachments/assets/dc40ab72-ae15-4fa4-9b52-424a35104c51" />
+
+*How the string construction appears on IDA decompiler.*
+
 # Use
 - `vm_cstr(...)` to get a pointer to a c-like string.
 - `vm_str(...)` to get a std c++ string.
