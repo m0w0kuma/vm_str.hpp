@@ -39,7 +39,7 @@ int main() {
 
 See [Limitations](#Limitations)
 
-# Compilers supported
+# Supported compilers
 - [x] msvc
 
 See [Limitations](#Limitations)
