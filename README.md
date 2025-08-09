@@ -13,16 +13,23 @@ The string is constructed on the stack at runtime and does not appear anywhere i
 *How the string construction appears on IDA decompiler.*
 
 # Use
-- `vm_cstr(...)` to get a pointer to a c-like string.
-- `vm_str(...)` to get a std c++ string.
+- `VM_CSTR(...)` to get a pointer to a c-like string.
+- `VM_STR(...)` to get a std c++ string.
+
+- `VM_W_CSTR(...)` to get a pointer to a c-like wide string.
+- `VM_W_STR(...)` to get a std c++ wide string.
 
 ```cpp
 #include "vm.hpp"
 
 int main() {
-    const char *c_like_string = vm_cstr("Hello, ");
-    std::string cpp_std_string = vm_str("World!");
-    std::cout << c_like_string << cpp_std_string << std::endl;
+   const char *c_like_string = VM_CSTR("Hello, ");
+   std::string cpp_std_string = VM_STR("World!");
+   std::cout << c_like_string << cpp_std_string << std::endl;
+
+   const wchar_t *cw_like_string = VM_W_CSTR(L"Hello, ");
+   std::wstring cpp_std_wstring = VM_W_STR(L"World!");
+   std::wcout << cw_like_string << cpp_std_wstring << std::endl;
 }
 ```
 
@@ -34,8 +41,8 @@ int main() {
 # Data types supported
 - [x] char*
 - [x] std::string
-- [ ] wchar_t*
-- [ ] std::wstring
+- [x] wchar_t*
+- [x] std::wstring
 
 See [Limitations](#Limitations)
 
@@ -45,7 +52,7 @@ See [Limitations](#Limitations)
 See [Limitations](#Limitations)
 
 # Limitations
-- Right now this only supports UTF-8 strings; non-UTF-8 (`wchar_t*`, `std::wstring`) may get support in the future.  
+- We currently support UTF-8 and UTF-16 strings; other encodings are not supported.  
 - No compiler other than MSVC will be supported.
 - Builds with C++ standards earlier than C++20 will fail.
 - Build time is highly affected by `vm_str.hpp` since it makes extensive use of `constexpr` evaluations to generate the bytecode. Based on anecdotal data, even a single character can increase build time by ~1 second. Runtime performance does not seem to be significantly affected, though.
