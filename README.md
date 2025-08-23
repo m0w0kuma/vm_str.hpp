@@ -20,7 +20,7 @@ The string is constructed on the stack at runtime and does not appear anywhere i
 - `VM_W_STR(...)` to get a std c++ wide string.
 
 ```cpp
-#include "vm.hpp"
+#include "vm_str.hpp"
 
 int main() {
    const char *c_like_string = VM_CSTR("Hello, ");
