@@ -2,7 +2,7 @@
 vm_str.hpp is a header only C++20 compile time string obfuscator.
 
 # About
-vm_str.hpp is a header-only string obfuscation library, heavily inspired by xorstr. Unlike xorstr, it generates a different encryption scheme for every build. This is achieved using a virtual machine (VM)-like approach with a predefined set of operations.
+I got this idea floating in my head about trying to do something like xorstr, but with random constexpr-chosen operations instead of just xor. 
 
 At compile time (constexpr), the library generates bytecode representing the obfuscation schema. Then, at runtime, a stack-based VM interprets this bytecode to reconstruct the original string.
 
